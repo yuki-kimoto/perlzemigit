@@ -12,6 +12,8 @@ Gitリポジトリの作成画面への移動は、右上の「+」の「New rep
 
 プロジェクト名を入力して「Create repository」のボタンを押します。
 
+プロジェクトを他のユーザーから見れないようにプライベートにする場合は「Private」をチェックしてください。
+
 <a href="https://github.com/join"><img src="/images/github/github_create_repo_project.png" style="width:100%"></a>
 
 成功すると以下の画面が表示されます。
@@ -26,12 +28,18 @@ Gitリポジトリの作成画面への移動は、右上の「+」の「New rep
 
 HTTPSでも、リポジトリをpush/pullを行うこともできますが、pushのたびにパスワードを聞かれるので、開発を行う場合は、公開鍵を登録して、SSLプロトコルを使うのがお勧めです。
 
+<ul>
+  <li><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></li>
+</ul>
+
 <h3>ローカルの既存のGithubレポジトリをGithub上のリポジトリに反映する</h3>
 
 ローカルの既存のGithubレポジトリをGithub上のリポジトリに反映するには、リポジトリの作成成功画面に記載されている、以下のコマンドを実行します。
 
+URLのタブはSSHをクリックしましょう。
+
 <pre>
-git remote add origin git@github.com:yuki-kimoto/testproject.git
+git remote add origin git@github.com:shinshina-kimoto/fudousan_app.git
 git push -u origin master
 </pre>
 
