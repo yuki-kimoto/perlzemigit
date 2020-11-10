@@ -1,0 +1,65 @@
+<h2>git status - コミット準備されているかを確認する</h2>
+
+コミット準備されているかを確認するには「git status」コマンドを使用します。
+
+<pre>
+# コミット準備されているかを確認
+git status
+</pre>
+
+<h4>コミット準備とは</h4>
+
+Gitでは、いきなりコミットするのではなく、コミット準備という作業をコミットの前に行います。コミットするファイルを確定する作業のようなものだと考えてください。
+
+<h4>コミット準備がされていない場合</h4>
+
+コミット準備がされていない場合の「git status」コマンドの出力例です。
+
+<pre>
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   templates/blog/20201109142343.html
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       a.txt
+#       templates/blog/20201110105057.html
+no changes added to commit (use "git add" and/or "git commit -a")
+</pre>
+
+新規に作成したファイルは、まだトラックされていませんと表示されています。
+
+修正がされたファイルは、まだコミットのための準備(ステージング)がされていませんと表示されます。
+
+<h4>コミット準備がされた場合</h4>
+
+コミット準備をするには「git add」コマンドを使用します。「git add」を実行した後の状態を見てみましょう。
+
+<pre>
+# コミット準備
+git add .
+
+# コミット準備がされているか確認
+git status
+</pre>
+
+「git status」の出力結果を見てみましょう。
+
+<pre>
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       new file:   a.txt
+#       modified:   templates/blog/20201109142343.html
+#       new file:   templates/blog/20201110105057.html
+#
+</pre>
+
+変更のコミット準備ができましたと表示されます。
+
+コミットするファイルの確認ができたら「git commit」コマンドで、コミットをしましょう。
