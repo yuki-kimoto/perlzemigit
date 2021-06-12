@@ -6,17 +6,12 @@ Githubに公開鍵を登録しましょう。公開鍵を登録するとSSHプ�
 
 <h3>公開鍵と秘密鍵の生成</h3>
 
-まず、<a href="https://linux.perlzemi.com/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。
+まず、<a href="https://linux.perlzemi.com/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
 
 <pre>
-cd ~/.ssh
-</pre>
-
-「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
-
-<pre>
-mkdir ~/.ssh
+mkdir -p ~/.ssh
 chmod 700 ~/.ssh
+cd ~/.ssh
 </pre>
 
 
@@ -35,20 +30,6 @@ id_rsa_github
 「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_github」は秘密鍵、「id_rsa_github.pub」は公開鍵です。
 
 パスフレーズを入力してくださいと聞かれたときは、パスフレーズを設定しないので、Enterを押してください。再入力を求められるのでEnterを押してください。
-
-<a href="https://linux.perlzemi.com/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
-
-<pre>
-cat id_rsa_github.pub
-</pre>
-
-以下のように表示されます。
-
-<pre>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41/jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby/KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA+JSFLOGB8wxCV8UFh9XWXI4c5QKQ/Hyl8//nXT6suQf199VNf4Ru31rs+49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM/4OMQeIxZmZg8ysML307viqkKh/2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp@myhost
-</pre>
-
-この値が必要になるので、コピーしておきましょう。
 
 <h4>秘密鍵のパーミッションは600である必要がある</h4>
 
@@ -88,6 +69,20 @@ New SSH keyをクリック。
 <a href="https://github.com/join"><img src="/images/github/github_user_setting_new_ssh_key_button.png" style="width:100%"></a>
 
 TitleとKeyを入力。Titleは任意で大丈夫です。Keyは「id_rsa_github.pub」の内容です。
+
+<a href="https://linux.perlzemi.com/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
+
+<pre>
+cat id_rsa_github.pub
+</pre>
+
+以下のように表示されます。
+
+<pre>
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41/jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby/KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA+JSFLOGB8wxCV8UFh9XWXI4c5QKQ/Hyl8//nXT6suQf199VNf4Ru31rs+49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM/4OMQeIxZmZg8ysML307viqkKh/2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp@myhost
+</pre>
+
+この値がを貼り付けましょう。
 
 <a href="https://github.com/join"><img src="/images/github/github_user_setting_input_ssh_key_button.png" style="width:100%"></a>
 
