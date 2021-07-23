@@ -1,0 +1,96 @@
+<h2>コミットの準備を行う</h2>
+
+Gitでは、コミットを行う前に、コミットの準備を行います。コミットの準備を行うには「<a href="/blog/20201112094521.html">git add</a>」コマンドを使用します。
+
+<pre>
+# ひとつのファイルをコミット準備状態にする
+git add ファイル名
+</pre>
+
+カレントディレクトリ以下にある、すべてのファイルを、コミット準備状態にするには「git add .」とします。Git 2.0からは、削除されたファイルも、コミット準備状態にしてくれます。
+
+<pre>
+# カレントディレクトリ以下にあるファイルをコミット準備状態にする
+git add .
+</pre>
+
+<h3>コミット準備状態を確認する</h3>
+
+コミット準備状態を確認するには「<a href="/blog/20201110105057.html">git status</a>」コマンドを使用します。
+
+<pre>
+# コミット準備状態を確認する
+git status
+</pre>
+
+コミット準備ができている場合の出力のサンプルです。「templates/index.html」は修正、「README.md」削除で、コミット準備状態になっています。
+
+<pre>
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    README.md
+        modified:   templates/index.html
+</pre>
+
+<h3>コミットされるファイルの差分を確認する</h3>
+
+コミットする前には、実際にコミットされるファイルの差分を確認しましょう。実際にコミットされるファイルの差分を確認するには「git diff」コマンドの「--cached」オプションを使用します。「--cached」オプションのない「git diff」は、ワーキングディレクトリと、コミット準備されたファイルの差分を表示するので、注意しましょう。
+
+<pre>
+# コミットされるファイルの差分を確認する
+git diff --cached
+</pre>
+
+出力例です。
+
+<pre>
+$ git diff --cached
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+-<h1>
+-  Perl入門ゼミ
+-</h1>
+-
+-
+diff --git a/templates/index.html b/templates/index.html
+index 66c755ea..f0b95399 100644
+--- a/templates/index.html
++++ b/templates/index.html
+@@ -2,7 +2,7 @@
+
+ <b>Perlテキスト処理</b>と<b>正規表現</b>の入門の入門講座です。Perlは<b>テキスト処理</b>と<b>正規表現</b>が得意なプログラミング言語で<b>Linuxサーバー管理</b>、<b>Webシステム開発</b>という分野で活躍。テキスト処理と正規表現の基礎としてPerlプ
+ログラミング言語を基本から解説。LinuxとWeb開発も学べます。Hello World!
+
+-Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。
++Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。いいね。
+
+ <h3>Perlプログラミング入門</h3>
+</pre>
+ 
+<h3>コミット準備をキャンセルする</h3>
+
+コミット準備をキャンセルするには「git reset」コマンドをを使用します。
+
+<pre>
+# コミット準備をキャンセルする
+git reset
+</pre>
+
+間違っても、決して、コミット準備をキャンセルするために「git reset」コマンドに「--hard」オプションをつけないでください。今まで書いた、ワーキングディレクトリの変更内容が、すべてキャンセルされ、涙が出てきます。テキストエディタ上に、変更内容が残っている場合は、急いで、上書きしましょう。
