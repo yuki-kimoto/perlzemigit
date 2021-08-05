@@ -1,0 +1,107 @@
+<h2>git diff - 差分の表示</h2>
+
+git diffコマンドは差分を表示するコマンドです。
+
+<pre>
+# 差分の表示
+git diff
+</pre>
+
+git diff コマンドの出力例です。
+
+<pre>
+$ git diff
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+diff --git a/README.md b/README.md
+deleted file mode 100644
+index 372dc9d3..00000000
+--- a/README.md
++++ /dev/null
+@@ -1,5 +0,0 @@
+-<h1>
+-  Perl入門ゼミ
+-</h1>
+-
+-
+diff --git a/templates/index.html b/templates/index.html
+index 66c755ea..f0b95399 100644
+--- a/templates/index.html
++++ b/templates/index.html
+@@ -2,7 +2,7 @@
+
+ <b>Perlテキスト処理</b>と<b>正規表現</b>の入門の入門講座です。Perlは<b>テキスト処理</b>と<b>正規表現</b>が得意なプログラミング言語で<b>Linuxサーバー管理</b>、<b>Webシステム開発</b>という分野で活躍。テキスト処理と正規表現の基礎としてPerlプ
+ログラミング言語を基本から解説。LinuxとWeb開発も学べます。Hello World!
+
+-Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。
++Perlは、ほとんどのLinux/Unixにインストールされていて、後方互換性が高く安定して
+運用できることに定評があります。いいね。
+
+ <h4>Perlプログラミング入門</h4>
+</pre>
+
+git diffコマンドは、引数がない場合は、ワーキングディレクトリと<a href="/blog/20210723090147.html">コミット準備状態</a>との差分を表示します。コミット準備状態は、コミット準備を行っていない場合は、直近のコミットです。
+
+つまり、コミット準備を行った後は「git diff」コマンドは、なんの差分も表示しないということに注意しましょう。
+
+<h4>直近のコミットとコミット準備状態の差分を表示する</h4>
+
+直近のコミットとコミット準備状態の差分を表示するには「--cached」オプションを使い「git diff --cached」とします。
+
+<pre>
+# 直近のコミットとコミット準備状態の差分を表示
+git diff --cached
+</pre>
+
+「git add .」でコミット準備状態にした後に、実際にどんな差分が新しいコミットに追加されるのかを知るには「--cached」オプションを使用する必要があることに注意しましょう。
+
+<h4>特定のコミット間の差分を表示する</h4>
+
+特定のコミット間の差分を表示するには、二つのコミットIDを引数に指定します。
+
+<pre>
+git diff コミットID1 コミットID2
+</pre>
+
+コミットIDを調べるには<a href="/blog/20201103093112.html">git logコマンド</a>を使用します。
+
+コミットIDを指定したサンプルです。
+
+<pre>
+git diff 30ce650c40cd05632fc8a992a7bff9d79dbaaa08 016d2063f2ed90d14ba9cea1a7ef1c2f962a003b
+</pre>
+
+<h4>現在のコミットと一つ前のコミットとの差分を表示する</h4>
+
+現在のコミットと一つ前のコミットとの差分を表示してみましょう。HEADというブランチが現在のブランチの先頭を示し、「^」という記号が、一つ前を表示することを利用すると次のように書けます。
+
+<pre>
+git diff HEAD^ HEAD
+</pre>
+
+さらに、省略して、以下のように書けます。
+
+<pre>
+git diff HEAD^
+</pre>
+
+<h4>特定のコミットとその直前のコミットの差分を表示する</h4>
+
+特定のコミットとその直前のコミットの差分を表示するには以下のようにします。
+
+<pre>
+git diff 30ce650c40cd05632fc8a992a7bff9d79dbaaa08^ 30ce650c40cd05632fc8a992a7bff9d79dbaaa08
+</pre>
+
+<h4>ブランチの差分を表示する</h4>
+
+ブランチの差分を表示するには以下のようにしましょう。ブランチがコミットに別名をつけたものだということを、知っていれば理解できますね。
+
+<pre>
+git diff main some_branch
+</pre>
