@@ -1,18 +1,24 @@
 <h2>Git講座 - プロのWeb開発者のソースコード管理</h2>
 
-実践Git入門は、プロのWeb開発者の現場で使われているソースコード管理ツールGitを学べる講座です。Gitは<a href="https://linux.perlzemi.com/">Linux</a>サーバー上で<a href="https://websystem.perlzemi.com/">Webアプリケーション</a>のプログラムのソースコードや<a href="https://web-html-css-perl-genki.com/">HTML・CSS</a>を管理するために実務で広く活用されています。
+実践Git入門は、プロのWeb開発者の現場で使われているソースコード管理ツールGitを学べる講座です。GitはLinuxサーバー上でWebアプリケーションのプログラムのソースコードやHTML・CSSを管理するために実務で広く活用されているコマンドラインツールです。
+
+<pre>
+# ソースコードをコミット(ファイル管理情報に追加)する
+git commit -m "Fix web api bug"
+
+# ソースコード管理情報をリモートサーバーに転送
+git push origin main
+
+# チームの他のメンバーが修正した内容を取り込む
+git merge tanaka_web_api_fix
+</pre>
 
 <h3>Git入門</h3>
 
+Git入門です。Gitでソースコードを管理する技術を学びましょう。
+
 <ul>
-  <li><a href="/blog/20210719151607.html">Gitとは</a></li>
-  <li><a href="/blog/20210720092930.html">Gitリポジトリの初期化</a></li>
-  <li><a href="/blog/20210721142530.html">メールアドレスと名前の登録</a></li>
-  <li><a href="/blog/20210723090147.html">コミットの準備を行う</a></li>
-  <li><a href="/blog/20210729082405.html">コミットを行う</a></li>
-  <li><a href="/blog/20210803133300.html">リモートリポジトリにブランチをプッシュする</a></li>
-  <li><a href="/blog/20200610092020.html">Gitで管理しないファイルを設定する - .gitignore</a></li>
-  <li><a href="/blog/20201221091244.html">Gitで削除したファイルを復元する簡単な方法</a></li>
+  <li><a href="/tutorial.html">Git入門</a></li>
 </ul>
 
 <h3>Gitコマンド</h3>
