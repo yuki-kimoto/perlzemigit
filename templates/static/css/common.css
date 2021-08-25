@@ -306,6 +306,81 @@
     font-weight:bold;
   }
 
+  /* bread
+  ----------------------------------*/
+  .bread ul {
+    list-style: none;
+    overflow: hidden;
+    color: #777;
+    font: 10px Verdana, sans-serif;
+    background: #fff;
+    border: 1px solid #dedede;
+  }
+  .bread li {
+    float: left;
+    line-height: 30px;
+    text-shadow: 0 1px 0 white;
+  }
+  .bread li a {
+    color: #666;
+    text-decoration: none;
+    padding: 0 10px 0 20px;
+    background: #eee;
+    background: -webkit-gradient(linear, left top, right top,
+      from(#fff),
+      color-stop(0.85,#efefef),
+      to(#efefef));
+    background: -moz-linear-gradient(left,
+      #fff,
+      #efefef 85%,
+      #efefef);
+    background: linear-gradient(left,
+      #fff,
+      #efefef 85%,
+      #efefef);
+    display: block;
+    float: left;
+  }
+  .bread li a::after {
+    position: relative;
+    display: block;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: -15px;
+    height: 15px;
+    width: 10px;
+    content: " ";
+    -webkit-transform: skew(-30deg);
+    background: #efefef;
+    border-right: 1px solid #d6d6d6;
+    -moz-transform: skew(-30deg);
+    -o-transform: skew(-30deg);
+    transform: skew(-30deg);
+  }
+  .bread li a::before {
+    float: right;
+    display: block;
+    margin-bottom: -15px;
+    margin-left: auto;
+    margin-right: -15px;
+    height: 15px;
+    width: 10px;
+    content: " ";
+    -webkit-transform: skew(30deg);
+    background: #efefef;
+    border-right: 1px solid #d6d6d6;
+    -moz-transform: skew(30deg);
+    -o-transform: skew(30deg);
+    transform: skew(30deg);
+  }
+  .bread li:first-child a {padding-left: 10px;}
+  .bread li:last-child {
+    padding-left: 20px;
+    background: transparent !important;
+    color: black;
+  }
+  .bread li a:hover {color: #d31;}
+
 /* Tablet and Smart phone */
 @media only screen and (max-width:960px) {
   .content {
