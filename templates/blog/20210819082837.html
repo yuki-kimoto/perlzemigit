@@ -1,3 +1,23 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/commands.html">
+        <span itemprop="name">コマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
 <h2>git merge - マージする</h2>
 
 「git merge」コマンドでマージができます。git mergeの引数はコミットIDですが、<a href="/blog/20201220091244.html">ブランチ</a>はコミットIDに名前を付けたもので、日常の用途においては、ブランチ名を指定してマージを行います。マージ先は、現在のカレントブランチです。
