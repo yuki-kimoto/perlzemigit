@@ -122,7 +122,7 @@ sub create_list {
   {
     my $content;
     $content = <<'EOS';
-<h2>Entries</h2>
+<h2>記事一覧</h2>
 EOS
     $content .= "<ul>\n";
     my $before_year = 0;
@@ -181,10 +181,10 @@ EOS
   $api->add_page_link_to_first_h_tag($data);
 
   # Title
-  $data->{title} = "Entries - $config->{site_title}";
+  $data->{title} = "記事一覧 - $config->{site_title}";
 
   # Description
-  $data->{description} = "Entries of $config->{site_title}";
+  $data->{description} = "記事一覧 $config->{site_title}";
 
   # Read common templates
   $api->read_common_templates($data);
