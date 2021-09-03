@@ -390,6 +390,7 @@
     margin-bottom:15px;
   }
   .side {
+    display:none;
     float:none;
     width:97%;
     margin:0 auto;
