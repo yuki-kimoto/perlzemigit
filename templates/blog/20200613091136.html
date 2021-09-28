@@ -22,11 +22,11 @@
 
 Githubに公開鍵を登録しましょう。公開鍵を登録するとSSHプロトコルで、Gitリポジトリのpush/pullを行うことができます。
 
-この記事は、<a href="https://linux.perlzemi.com/">Linux</a>上で秘密鍵を作成することを前提としています。
+この記事は、<a href="https://linux.perlclub.net/">Linux</a>上で秘密鍵を作成することを前提としています。
 
 <h3>公開鍵と秘密鍵の生成</h3>
 
-まず、<a href="https://linux.perlzemi.com/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
+まず、<a href="https://linux.perlclub.net/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
 
 <pre>
 mkdir -p ~/.ssh
@@ -53,7 +53,7 @@ id_rsa_github
 
 <h4>秘密鍵のパーミッションは600である必要がある</h4>
 
-秘密鍵のパーミッションは600である必要があります。ssh-keygenを使って作成した場合は、パーミッションは600に設定されますが、他のサーバーから秘密鍵の内容をコピーしてきた場合は、<a href="https://linux.perlzemi.com/blog/20200519082545.html">chmod</a>コマンドを使って、パーミッションを600にしましょう。
+秘密鍵のパーミッションは600である必要があります。ssh-keygenを使って作成した場合は、パーミッションは600に設定されますが、他のサーバーから秘密鍵の内容をコピーしてきた場合は、<a href="https://linux.perlclub.net/blog/20200519082545.html">chmod</a>コマンドを使って、パーミッションを600にしましょう。
 
 <pre>
 chmod 600 id_rsa_github
@@ -90,7 +90,7 @@ New SSH keyをクリック。
 
 TitleとKeyを入力。Titleは任意で大丈夫です。Keyは「id_rsa_github.pub」の内容です。
 
-<a href="https://linux.perlzemi.com/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
+<a href="https://linux.perlclub.net/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
 
 <pre>
 cat id_rsa_github.pub
