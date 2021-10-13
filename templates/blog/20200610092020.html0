@@ -1,0 +1,94 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/tutorial.html">
+        <span itemprop="name">入門</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>Gitで管理しないファイルを設定する - .gitignore</h2>
+
+Gitで管理しないファイルを設定しておくには「.gitignore」ファイルを使用します。<a href="https://linux.perlclub.net/blog/20191205081119.html">touch</a>コマンドでファイルを作成します。「.gitignore」で記述しておくと、<a href="/blog/20201112094521.html">git addコマンド</a>で、コミット準備の状態にされなくなります。
+
+<pre>
+touch .gitignore
+</pre>
+
+.gitignoreは、リポジトリのどこにでも置くことができますが、リポジトリのトップで管理することを、推奨します。
+
+<h4>絶対パス</h4>
+
+絶対パスで記述すると、Gitリポジトリのルートからの記述になります。
+
+「/foo」が管理されなくなる。
+
+<pre>
+/foo
+</pre>
+
+「/foo/bar」が管理されなくなる。
+
+<pre>
+/foo/bar
+</pre>
+
+<h4>相対パス</h4>
+
+相対パスで書くと、Gitリポジトリのルートディレクトリの中のどこかに含まれているファイルが管理されなくなります。
+
+以下の場合は「foo.txt」というファイルすべてが、管理されなくなります。
+
+<pre>
+foo.txt
+</pre>
+
+ワイルドカードを利用することができるので、ログだけを管理しないということができます。
+
+<pre>
+*.log
+</pre>
+
+<h4>管理を外したものの中で、再び管理する</h4>
+
+管理を外したものの中で、再び管理するには「!」を使います。これ、どこで使うの?
+
+<h4>ディレクトリを管理する</h4>
+
+.gitignoreを書いて、必ずつまづくのは、ディレクトリだけを管理できないということです。これはGitの仕様です。
+
+ディレクトリを管理したい場合は、ディレクトリの中にまず「.gitkeep」というファイルを作成します。これは慣習的な名前で、推奨される名前です。
+
+fooというディレクトリを管理したい場合は「foo」ディレクトリの中に「.gitkeep」を作成します。
+
+そして、ワイルドカードを使って、まずfooディレクトリの中にあるファイルすべてを、管理しないという記述を行います。
+
+<pre>
+foo/*
+</pre>
+
+.gitkeepも管理を外れているので、「!」を使って、再び管理するという記述を行います。
+
+<pre>
+!foo/.gitkeep
+</pre>
+
+まとめて書くと以下になります。
+
+<pre>
+foo/*
+!foo/.gitkeep
+</pre>
+
+これで、fooディレクトリをGitリポジトリで管理できます。

@@ -1,0 +1,127 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/github.html">
+        <span itemprop="name">Githubとの連携</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>Githubに公開鍵を登録する</h2>
+
+Githubに公開鍵を登録しましょう。公開鍵を登録するとSSHプロトコルで、Gitリポジトリのpush/pullを行うことができます。
+
+この記事は、<a href="https://linux.perlclub.net/">Linux</a>上で秘密鍵を作成することを前提としています。
+
+<h3>公開鍵と秘密鍵の生成</h3>
+
+まず、<a href="https://linux.perlclub.net/blog/20200621103220.html">SSH</a>の秘密鍵を保存しておくディレクトリに移動します。「~/.ssh」ディレクトリがない場合は作成します。パーミッションは「700」にします。
+
+<pre>
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+cd ~/.ssh
+</pre>
+
+
+公開鍵と秘密鍵のペアを生成するには、ssh-keygenコマンドを実行します。公開鍵は秘密鍵とセットになっていて、秘密鍵はローカルマシンに、公開鍵は、Github上に登録します。
+
+<pre>
+ssh-keygen -t rsa
+</pre>
+
+生成するファイル名を聞かれますので以下の名前で入力しましょう。
+
+<pre>
+id_rsa_github
+</pre>
+
+「id_rsa_github」と「id_rsa_github.pub」というファイルが作成されます。「id_rsa_github」は秘密鍵、「id_rsa_github.pub」は公開鍵です。
+
+パスフレーズを入力してくださいと聞かれたときは、パスフレーズを設定しないので、Enterを押してください。再入力を求められるのでEnterを押してください。
+
+<h4>秘密鍵のパーミッションは600である必要がある</h4>
+
+秘密鍵のパーミッションは600である必要があります。ssh-keygenを使って作成した場合は、パーミッションは600に設定されますが、他のサーバーから秘密鍵の内容をコピーしてきた場合は、<a href="https://linux.perlclub.net/blog/20200519082545.html">chmod</a>コマンドを使って、パーミッションを600にしましょう。
+
+<pre>
+chmod 600 id_rsa_github
+</pre>
+
+<h3>GithubにSSH接続する場合に作成した秘密鍵を使う設定</h3>
+
+GithubにSSH接続する場合に作成した秘密鍵を使う設定をしておきましょう。「~/.ssh/config」に追記します。パーミッションも600にしておきましょう。
+
+<pre>
+echo '
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_github
+  User git
+' | cat >> ~/.ssh/config
+chmod 600 ~/.ssh/config
+
+</pre>
+
+<h3>Github上に公開鍵を登録</h3>
+
+Github上に公開鍵を登録しましょう。右上のユーザーアイコンの「Settings」から移動します。
+
+<a href="https://github.com/join"><img src="/images/github/github_user_setting_button.png" style="width:100%"></a>
+
+SSH and GPG keyをクリックします。
+
+<a href="https://github.com/join"><img src="/images/github/github_user_setting_ssh_button.png" style="width:100%"></a>
+
+New SSH keyをクリック。
+
+<a href="https://github.com/join"><img src="/images/github/github_user_setting_new_ssh_key_button.png" style="width:100%"></a>
+
+TitleとKeyを入力。Titleは任意で大丈夫です。Keyは「id_rsa_github.pub」の内容です。
+
+<a href="https://linux.perlclub.net/blog/20200113083613.html">cat</a>コマンドで「id_rsa_github.pub」の中身を表示してみましょう。
+
+<pre>
+cat id_rsa_github.pub
+</pre>
+
+以下のように表示されます。
+
+<pre>
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjSsucYA958wTIKUcPRXC2iZxb84FXkzm41/jzpfnUeBFsypS8xfTXpfDaSIYeMDyr9pIUfDuWWPykoofL4WZaJYDy5pQclFwby/KttDRAnm0XZQ2ZDUtnrUUdva55mxOcTJP0c1VWXpwrhBA+JSFLOGB8wxCV8UFh9XWXI4c5QKQ/Hyl8//nXT6suQf199VNf4Ru31rs+49FDW9FyvoX1GGEEBJCT2ROVD6qi1xY766PuhM/4OMQeIxZmZg8ysML307viqkKh/2mecwkdV1mxGQt8GbO3gvTOX5h9p7tGEwa3zSHhxudux1Kf6Pfcg4FwKuld8r77DKMXEszpRI11 myapp@myhost
+</pre>
+
+この値がを貼り付けましょう。
+
+<a href="https://github.com/join"><img src="/images/github/github_user_setting_input_ssh_key_button.png" style="width:100%"></a>
+
+これで、登録が完了です。
+
+<h3>GithubへSSHで接続できることの確認</h3>
+
+GithubへSSHで接続できることの確認しましょう。
+
+<pre>
+ssh -T git@github.com
+</pre>
+
+まだアクセスしたホストでない場合は、通信を許可するかきかれるので「yes」と入力してEnterを押しましょう。
+
+以下のように表示されると成功です。
+
+<pre>
+Hi shinshina-kimoto! You've successfully authenticated, but GitHub does not provide shell access.
+</pre>
+
+これで、SSHで、push/pullができるようになります。

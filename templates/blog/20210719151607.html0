@@ -1,0 +1,59 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/tutorial.html">
+        <span itemprop="name">入門</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>Gitとは</h2>
+
+Gitは、ソースコードのバージョン管理システムです。分散バージョン管理システムで、リモートリポジトリ、ローカルリポジトリともに、完全なリポジトリ情報を持つことが特徴です。
+
+<h3>Gitの歴史</h3>
+
+Gitは<a href="https://linux.perlclub.net/">Linux</a>の創始者のリーナス・トーバルズ氏によって、Linuxの大量のソースコードを速く・効率的に管理するために作成されたバージョン管理システムです。Gitは、主に<a href="https://clanguage.perlclub.net/">C言語</a>で書かれ、部分的に<a href="https://perlzemi.com/">Perl</a>で書かれています。
+
+<h3>Gitの特徴</h3>
+
+Gitの特徴です。
+
+<h4>分散リポジトリ管理システム</h4>
+
+Gitは分散リポジトリ管理システムで、リモートリポジトリとローカルリポジトリがともに、完全なリポジトリ情報を持ちます。実際のGitを使ったファイル管理では、ローカルリポジトリにファイルをコミット、差分をリモートリポジトリに送信(push)という作業を行います。
+
+<h4>大量のソースコードでも速い</h4>
+
+Gitは大量のソースコードでも速いです。
+
+<h4>ブランチ作成が速い</h4>
+
+Gitは、ブランチの作成が速いです。
+
+<h4>Gitはファイルの喪失に強い</h4>
+
+Gitは分散リポジトリ管理システムなので、ファイルの情報の喪失に強いです。ひとつのリポジトリがファイル破損をしたとしても、他のリポジトリでファイル破損がなければ、完全に復旧できます。
+
+<h4>GithubというWebインタフェースがある</h4>
+
+現在Microsoftが提供しているGithubというGitのためのWebインターフェースが無料で利用できます。
+
+<h4>アプリケーションのデプロイが簡単</h4>
+
+アプリケーションがテキストファイルで構成されていれば、アプリケーションのデプロイは、コマンドを一つ実行するだけで、完了します。
+
+<h4>任意の過去の状態にいつでも戻せる</h4>
+
+ファイルを任意の過去の状態にいつでも戻すことができます。

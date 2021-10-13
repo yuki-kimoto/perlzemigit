@@ -1,0 +1,70 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/github.html">
+        <span itemprop="name">Githubとの連携</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>GithubでのGitリポジトリの作成</h2>
+
+次に、Gitリポジトリを作成します。Githubにサインインしていない場合は、サインインしてください。
+
+<h4>Gitリポジトリの作成画面へ移動</h4>
+
+Gitリポジトリの作成画面への移動は、右上の「+」の「New repository」から行います。
+
+<a href="https://github.com/join"><img src="/images/github/github_create_repo.png" style="width:100%"></a>
+
+<h4>Gitリポジトリの作成</h4>
+
+プロジェクト名を入力して「Create repository」のボタンを押します。
+
+プロジェクトを他のユーザーから見れないようにプライベートにする場合は「Private」をチェックしてください。
+
+<a href="https://github.com/join"><img src="/images/github/github_create_repo_project.png" style="width:100%"></a>
+
+成功すると以下の画面が表示されます。
+
+<a href="https://github.com/join"><img src="/images/github/github_create_repo_success.png" style="width:100%"></a>
+
+これで、Github上でのGitリポジトリは完成です。
+
+<h3>公開鍵の登録</h3>
+
+次に必要な手順は、公開鍵を登録する作業です。GithubへのリポジトリをSSHプロトコル上で、反映させるためには、公開鍵認証を行う必要があります。
+
+HTTPSでも、リポジトリをpush/pullを行うこともできますが、pushのたびにパスワードを聞かれるので、開発を行う場合は、公開鍵を登録して、SSLプロトコルを使うのがお勧めです。
+
+<ul>
+  <li><a href="/blog/20200613091136.html">Githubに公開鍵を登録する</a></li>
+</ul>
+
+<h3>ローカルの既存のGithubレポジトリをGithub上のリポジトリに反映する</h3>
+
+ローカルの既存のGithubレポジトリをGithub上のリポジトリに反映するには、リポジトリの作成成功画面に記載されている、以下のコマンドを実行します。
+
+URLのタブはSSHをクリックしましょう。
+
+<pre>
+git remote add origin git@github.com:shinshina-kimoto/fudousan_app.git
+git push -u origin master
+</pre>
+
+ローカルにおけるGitレポジトリの作成については、以下を参考にしてください。
+
+<ul>
+  <li><a href="/blog/20200605092020.html">git init - Gitリポジトリの初期化</a></li>
+</ul>

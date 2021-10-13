@@ -1,0 +1,35 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/github.html">
+        <span itemprop="name">Githubとの連携</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>Github Wikiのコンテンツのバックアップ方法</h2>
+
+Github WikiはGitで管理されているので、WikiのGitリポジトリを「git clone」するだけです。ページ全体をバックアップできます。
+
+<img src="/images/github/github_wiki_backup.png" style="width:100%">
+
+<pre>
+git clone https://github.com/yuki-kimoto/perlzemiubuntu.wiki.git
+</pre>
+
+<h3>ローカルで編集してpushする</h3>
+
+GithubのWikiは単なるGitリポジトリなので、ローカルで編集して「git push」するということも可能です。
+
+全体的に修正したい内容がある場合に、便利です。

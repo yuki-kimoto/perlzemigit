@@ -1,0 +1,47 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/tutorial.html">
+        <span itemprop="name">入門</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>メールアドレスと名前の登録</h2>
+
+個人の識別情報としてGitに、メールアドレスと名前を登録しましょう。これは、コミットするときの個人の識別情報として利用されます。
+
+<pre>
+# 名前の設定
+git config --global user.name "John Doe"
+
+# メールアドレスの設定
+git config --global user.email johndoe@example.com
+</pre>
+
+この設定内容は「~/.gitconfig」に保存されます。<a href="https://linux.perlclub.net/blog/20200113083613.html">catコマンド</a>で内容を見てみましょう。
+
+<pre>
+cat ~/.gitconfig
+</pre>
+
+出力したサンプルです。
+
+<pre>
+[user]
+        email = kimoto_yuki@example.com
+        name = Yuki Kimoto
+[core]
+        editor = vi
+</pre>

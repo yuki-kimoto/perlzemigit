@@ -1,0 +1,102 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/commands.html">
+        <span itemprop="name">コマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>git log - コミットログの内容を見る</h2>
+
+コミットログの内容を見るには「git log」コマンドを使用します。
+
+<pre>
+# コミットログの内容を見る
+git log
+</pre>
+
+コミットログが表示されます。コミットID、著者、コミット日付、コミットメッセージが見れます。
+
+<pre>
+commit c0881683c414c3e44ee6e337e295a476a8f7e5ec
+Author: Yuki Kimoto <kimoto.yuki@gmail.com>
+Date:   Fri Oct 16 08:27:22 2020 +0900
+
+    fix echange api string return value bug
+
+commit 45a834a05edb51f412b63d67699ea5179e32e70a
+Author: Yuki Kimoto <kimoto.yuki@gmail.com>
+Date:   Fri Oct 16 07:54:23 2020 +0900
+
+    update MANIFEST
+
+commit 213919f220f8ee6803edfe41b495f6e98c432437
+Author: Yuki Kimoto <kimoto.yuki@gmail.com>
+Date:   Fri Oct 16 07:53:39 2020 +0900
+
+    add type check compiler error tests
+</pre>
+
+<h3>コミットログを下に進める</h3>
+
+コミットログを下に進めるには「Space」キーを使用します。
+
+下へ、下へ読んでいけます。
+
+<h3>コミットログの表示を終了する</h3>
+
+コミットログの表示を終了するには「q」と入力してEnterを押します。
+
+<h3>コミットログを検索する</h3>
+
+コミットログをコミットメッセージで検索するには「--grep」オプションを使用します。文字列には検索したい文字列を入力します。
+
+<pre>
+git log --grep 文字列
+</pre>
+
+検索にマッチしたコミットログを取り出すことができます。
+
+<h4>マッチしたコミットIDの一つ前のコミットIDを知りたい</h4>
+
+マッチしたコミットIDの一つ前のコミットIDを知りたいという場合が、たまにありますね。
+
+このような場合は、実は「コミットID^」という記法で、一つ前のコミットIDを指定することができます。「コミットID^^」で2つ前、「コミットID^^^」で3つ前が指定できます。
+
+検索にマッチしたコミットIDが以下だったとしましょう。
+
+<pre>
+be401600433693794eecbc65ed4b9e787902ed9a
+</pre>
+
+この一つ前との差分を見たいとしましょう。「コミットID^」という記法を使って、次のようにします。
+
+<pre>
+git diff be401600433693794eecbc65ed4b9e787902ed9a^ be401600433693794eecbc65ed4b9e787902ed9a
+</pre>
+
+<h3>git logはどんな時に使いますか?</h3>
+
+git logを使う場面を紹介します。
+
+<a href="/blog/20201113141302.html">git commit</a>でコミットした後に確認する場合ですね。
+
+<a href="/blog/20201220091244.html">git branch</a>で作成されたブランチで、どのようなブランチなのかを確認する場合も、git logで、コミットの先頭をみたいですね。
+
+<a href="/blog/20201222100951.html">git checkout</a>で、ブランチを切り替えた時も、git logで、コミットの先頭を見たいです。
+
+<a href="/blog/20210806133244.html">git reset</a>で、コミットをある状態に戻すときのコミットIDを確認する場合も使いますね。
+
+その他、コミットIDを確認したい場合がある場合は、そのたびに、使います。

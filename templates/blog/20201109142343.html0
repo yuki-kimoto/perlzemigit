@@ -1,0 +1,54 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/commands.html">
+        <span itemprop="name">コマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>git init - Gitリポジトリの初期化</h2>
+
+Gitリポジトリを初期化するには「git init」コマンドを使用します。
+
+<pre>
+git init
+</pre>
+
+perlzemiというディレクトリをGitリポジトリとして初期化するサンプルです。<a href="https://linux.perlclub.net/blog/20191012191854.html">cdコマンド</a>で「perlzemi」ディレクトリに移動してから「git init」コマンドを実行します。
+
+<pre>
+cd perlzemi
+git init
+</pre>
+
+初期化すると「.git」というディレクトリが作成されます。
+
+<pre>
+.git
+</pre>
+
+「.git」ディレクトリの中には、このリポジトリに関するGitの設定や、Gitのコミット情報が保存されます。
+
+<h3>ワーキングディレクトリではない生のGitリポジトリを作成する</h3>
+
+ワーキングディレクトリを持たない生のGitリポジトリを作成するには「git init」の「--bare」オプションを使用します。
+
+開発者として使う場合は、生のGitリポジトリ(.gitに該当するディレクトリだけ)を作成する必要はないと思いますが、Githubのようなリポジトリ管理Webインターフェースを開発する場合には、作業ディレクトリを持たないGitリポジトリを作成する場合があります。
+
+<pre>
+mkdir foo.git
+cd foo.git
+git init --bare
+</pre>

@@ -1,0 +1,104 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/commands.html">
+        <span itemprop="name">コマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>git merge - マージする</h2>
+
+「git merge」コマンドでマージができます。git mergeの引数はコミットIDですが、<a href="/blog/20201220091244.html">ブランチ</a>はコミットIDに名前を付けたもので、日常の用途においては、ブランチ名を指定してマージを行います。マージ先は、現在のカレントブランチです。
+
+<pre>
+git merge ブランチ名
+</pre>
+
+<h3>マージって何?</h3>
+
+マージとは、ソースコードに加えられた変更を、取り込むことをいいます。
+
+たとえば私の現在のmainブランチに「a.txt」というファイルがあったとします。
+
+<b>わたしの現在のmainブランチの「a.txt」の内容</b>
+
+<pre>
+foo
+bar
+</pre>
+
+マシュマロさんが「main」ブランチから派生させた「masu_fix_bug」というブランチで、作業を行い、コミットをしていったとしましょう。そして「a.txt」は次のようになりました。
+
+<b>マシュマロさんの「masu_fix_bug」ブランチの「a.txt」の内容</b>
+
+<pre>
+foo
+bar
+baz
+</pre>
+
+私は「main」ブランチにマシュマロさんの「masu_fix_bug」の内容を取り込みたい。
+
+このような場合に、差分を解析して、取り込んでくれるのが、マージという機能です。差分は「<a href="/blog/20210805092910.html">git diff</a>」コマンドで確認することができます。
+
+<pre>
+git diff マージしたいブランチ名
+</pre>
+
+<h3>マージのアルゴリズム</h3>
+
+マージには、適用されるアルゴリズムが複数あります。
+
+<h4>ファストフォワードマージ</h4>
+
+一番単純なマージのアルゴリズムです。コミットを単純に進めることで、マージが可能な場合は、これが選択されます。
+
+<h4>ノンファストフォワードマージ</h4>
+
+二つのブランチの共通の祖先の位置からのそれぞれの差分をマージします。マージが衝突する場合があります。
+
+ここで、びっくりするのは、マージするときに、<a href="https://linux.perlclub.net/blog/20190401171737.html">vi</a>などのコマンドラインエディタが立ち上がることです。
+
+何も問題がなければ「ESC」でコマンドモードにして「wq」「Enter」(保存して終了)と押して、マージを完了させましょう。
+
+<h3>マージの衝突の解決</h3>
+
+マージが衝突した場合は、衝突を解決する必要があります。ぶつかった場合は、ソースコードの中に、以下のように表示されます。私はパスを「/foo」に変え、マシュマロさんはテキストを「Good bye」に変えてしまったので、衝突してしまいました。
+
+<pre>
+コードほにゃ前
+
+<<<<<<< HEAD
+<a href="/foo">Hello</a>
+=======
+<a href="/bar">Good bye</a>
+>>>>>>> masu_fix_bug
+
+コードほにゃ後ろ
+</pre>
+
+この部分は、どうあるべきなのかを、考えて、手動で修正する必要があります。修正の例です。
+
+<pre>
+コードほにゃ前
+
+<a href="/foo">Good bye</a>
+
+コードほにゃ後ろ
+</pre>
+
+これで、二人の変更内容が正しく反映された内容ができました。
+
+後は<a href="/blog/20201112094521.html">git add</a>コマンドで「git add .」して、<a href="/blog/20201113141302.html">git commit</a>コマンドで、コミットをする通常のコミット手順を行うだけです。

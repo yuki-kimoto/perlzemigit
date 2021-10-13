@@ -1,0 +1,79 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/commands.html">
+        <span itemprop="name">コマンド</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>git remote - リモートリポジトリの追加・変更・削除</h2>
+
+git remoteコマンドは、リモートリポジトリの追加・変更・削除を行うコマンドです。もうすこし、正確に書くと、URLで表現されるリモートリポジトリを表す簡単な名前を、追加・変更・削除するコマンドです。
+
+以下の解説は、便宜的にリモートリポジトリの追加・変更・削除という言葉で書きますが、実際の内容は、URLで表現されるリモートリポジトリを表す簡単な名前を、追加・変更・削除しているということを意識してください。
+
+<h3>リモートリポジトリの追加</h3>
+
+リモートリポジトリを追加するには「git remote add」コマンドを使用します。最初の引数は、リモートブランチの名前、第二引数は、リモートブランチのURLです。
+
+デフォルトのリモートリポジトリの名前は、慣習で「origin」です。
+
+<pre>
+# リモートリポジトリの追加
+git remote add origin git@github.com:yuki-kimoto/perlzemigit.git
+</pre>
+
+<h3>リモートリポジトリの変更</h3>
+
+リモートリポジトリ名が指しているURLを変更するには「git remote set-url」コマンドを使用します。
+
+<pre>
+git remote set-url origin git@github.com:yuki-kimoto/ohter.git
+</pre>
+
+<h3>リモートリポジトリの削除</h3>
+
+リモートリポジトリの削除するには「git remote remove」コマンドを使用します。
+
+<pre>
+git remote remove origin
+</pre>
+
+<h3>リモートリポジトリの一覧の表示</h3>
+
+リモートリポジトリの一覧を表示するには「git remote」とします。
+
+<pre>
+git remote
+</pre>
+
+出力結果のサンプルです。
+
+<pre>
+origin
+</pre>
+
+リモートリポジトリが、どのURLを指しているかを知りたい場合は「git remote」の「-v」オプションを使用します。
+
+<pre>
+git remote -v
+</pre>
+
+出力結果のサンプルです。
+
+<pre>
+origin  git@github.com:yuki-kimoto/perlzemigit.git (fetch)
+origin  git@github.com:yuki-kimoto/perlzemigit.git (push)
+</pre>

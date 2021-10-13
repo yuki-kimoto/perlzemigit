@@ -1,0 +1,65 @@
+<div class="bread">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/">
+        <span itemprop="name">Git</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="/tutorial.html">
+        <span itemprop="name">入門</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li>
+      here
+    </li>
+  </ul>
+</div>
+
+<h2>Gitリポジトリの初期化</h2>
+
+Gitリポジトリを作成しましょう。Gitでリポジトリ管理を行うときに最初に必要な作業がリポジトリの初期化です。
+
+ソースコードがあるプロジェクトのディレクトリが「myapp」だったとしましょう。
+
+<pre>
+mypp/foo.pl
+    /bar.pl
+    /baz.pl
+</pre>
+
+このディレクトリをGitリポジトリとして管理するには、「<a href="/blog/20201109142343.html">git init</a>」コマンドを使って初期化します。
+
+<a href="https://linux.perlclub.net/blog/20191012191854.html">cdコマンド</a>で「mypp」ディレクトリに移動します。
+
+<pre>
+cd mypp
+</pre>
+
+次に「git init」コマンドを実行します。
+
+<pre>
+# Gitリポジトリの初期化
+git init
+</pre>
+
+成功すると次のようなメッセージが出力されます。
+
+<pre>
+Initialized empty Git repository in /home/kimoto/labo/myapp/.git/
+</pre>
+
+<a href="https://linux.perlclub.net/blog/20191126082723.html">lsコマンド</a>で「-a」オプションを指定して、隠しディレクトリまで表示すると「.git」というディレクトリができています。
+
+<pre>
+$ ls -a
+.  ..  foo.txt  .git
+</pre>
+
+「.git」ディレクトリの中には、このリポジトリに関するGitの設定や、Gitのコミット情報が保存されます。
+
+「.git」というディレクトリの中身は、特別な理由がない限りは、直接編集しないよう注意しましょう。
+
+これでGitリポジトリの初期化の作業が完了です。
